@@ -1,0 +1,44 @@
+{
+    "type" : "MarkovNetwork",
+    "variables" :
+    [
+     {
+     "name" : "Introduction",
+     "values" : ["a0", "a1"]
+     },
+     {
+     "name" : "To",
+     "values" : ["a0", "a1"]
+     },
+     {
+     "name" : "Discrete",
+     "values" : ["a0", "a1"]
+     },
+     {
+     "name" : "Markov",
+     "values" : ["b0", "b1"]
+     },
+     {
+     "name" : "Networks",
+     "values" : ["c0", "c1"]
+     }
+     ],
+    "probabilities" :
+    [
+     {
+     "type" : "TableFactor",
+     "variables" : ["Introduction", "To", "Markov"],
+     "table" : [0.1, 0.5, 0.1, 0.5, 0.1, 0.5, 0.1, 0.5]
+     },
+     {
+     "type" : "TableFactor",
+     "variables" : ["Discrete","Markov"],
+     "table" : [0.99, 0.01, 0.5, 0.5]
+     },
+     {
+     "type" : "TableFactor",
+     "variables" : ["Markov","Networks"],
+     "table" : [0.99, 0.01, 0.5, 0.5]
+     }
+     ]
+}

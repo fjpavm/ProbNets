@@ -6,7 +6,7 @@ The Markov Networks implementation was done as part of the Autonomous System Res
 The produced paper and slides are also included in the repository.
 
 The json import/export is done with JSON for modern C++ (https://github.com/nlohmann/json) and a git submodule is used to provide the single include file needed.
-GraphViz will be needed along with it's include file gvc.h included in the include path (if using a linux distro probably installing the dev version of the graphviz packet will do)
+The GraphViz library will be needed along with it's include file gvc.h included in the include path (if using a linux distro probably installing the dev version of the graphviz library packet libgraphviz-dev will do)
 
 I'm releasing this under the MIT license as it is very permissive. If you end up using it or some derived work I would apreciate a mention and a message letting me know. 
 

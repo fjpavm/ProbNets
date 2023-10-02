@@ -1,0 +1,39 @@
+{
+    "type" : "BayesianNetwork",
+    "variables" :
+    [
+     {
+        "name" : "A",
+        "values" : ["a0", "a1", "a2"]
+     },
+     {
+        "name" : "B",
+        "values" : ["b0", "b1"]
+     },
+     {
+     "name" : "C",
+     "values" : ["c0", "c1"]
+     }
+    ],
+    "probabilities" :
+    [
+     {
+        "type" : "CDT",
+        "variable" : "A",
+        "table" : [[0.1, 0.5, 0.4]]
+     },
+     {
+        "type" : "CDT",
+        "variable" : "B",
+        "parents" : ["A"],
+        "table" : [[0.99, 0.01], [0.5, 0.5], [0.01, 0.99]]
+     },
+     {
+        "type" : "CDT",
+        "variable" : "C",
+        "parents" : ["A", "B"],
+        "table" : [[0.99, 0.01], [0.99, 0.01], [0.99, 0.01],
+                   [0.01, 0.99], [0.99, 0.01], [0.01, 0.99]]
+     }
+    ]
+}
