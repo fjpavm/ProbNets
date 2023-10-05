@@ -16,14 +16,26 @@ namespace prob_nets{
         std::map<std::string, std::string> sample;
         //TODO: Use MarkovBlanket and factors to calculate an instanciation
         return sample;
-        
+
+        // Register not instanciated variables so only they get cleared.
+        // This alows keeping pre-instanciated variables across several samples as evidence
+        std::vector<size_t> not_instanciated;
+        for(int i = 0; i < m_nodes.size(); i++)
+        {
+            if(m_nodes[i]->getIsInstanciated() == false){
+                not_instanciated.push_back(i);
+            }
+        }
+
         for(int i = 0; i < m_variables.size(); i++)
         {
             sample[m_variables[i]->getName()] = m_variables[i]->getValues()[m_variables[i]->getInstanciation()];
         }
-        for(int i = 0; i < m_variables.size(); i++)
+
+        // clear previously non instanciated
+        for(int i = 0; i < not_instanciated.size(); i++)
         {
-            m_variables[i]->clearInstanciation();
+            m_nodes[not_instanciated[i]]->clearInstanciation();
         }
         return sample;
     }

@@ -11,14 +11,26 @@ namespace prob_nets{
 
     std::map<std::string, std::string> BayesianNetwork::createSample()
     {
+        // Register not instanciated variables so only they get cleared.
+        // This alows keeping pre-instanciated variables across several samples as evidence
+        std::vector<size_t> not_instanciated;
+        for(int i = 0; i < m_nodes.size(); i++)
+        {
+            if(m_nodes[i]->getIsInstanciated() == false){
+                not_instanciated.push_back(i);
+            }
+        }
+
         std::map<std::string, std::string> sample;
         for(int i = 0; i < m_nodes.size(); i++)
         {
             sample[m_nodes[i]->getName()] = m_nodes[i]->getValues()[m_nodes[i]->getInstanciation()];
         }
-        for(int i = 0; i < m_nodes.size(); i++)
+
+        // clear previously non instanciated
+        for(int i = 0; i < not_instanciated.size(); i++)
         {
-            m_nodes[i]->clearInstanciation();
+            m_nodes[not_instanciated[i]]->clearInstanciation();
         }
         return sample;
     }

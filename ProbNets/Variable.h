@@ -20,6 +20,7 @@ namespace prob_nets{
         const std::vector<std::string>& getValues() const {return values;};
         const std::string& getName() const {return name;};
         virtual int getInstanciation();
+        bool getIsInstanciated(){return isInstanciated;}
     };
 
 }
