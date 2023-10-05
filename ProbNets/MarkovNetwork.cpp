@@ -20,9 +20,9 @@ namespace prob_nets{
         // Register not instanciated variables so only they get cleared.
         // This alows keeping pre-instanciated variables across several samples as evidence
         std::vector<size_t> not_instanciated;
-        for(int i = 0; i < m_nodes.size(); i++)
+        for(int i = 0; i < m_variables.size(); i++)
         {
-            if(m_nodes[i]->getIsInstanciated() == false){
+            if(m_variables[i]->getIsInstanciated() == false){
                 not_instanciated.push_back(i);
             }
         }
@@ -35,7 +35,7 @@ namespace prob_nets{
         // clear previously non instanciated
         for(int i = 0; i < not_instanciated.size(); i++)
         {
-            m_nodes[not_instanciated[i]]->clearInstanciation();
+            m_variables[not_instanciated[i]]->clearInstanciation();
         }
         return sample;
     }

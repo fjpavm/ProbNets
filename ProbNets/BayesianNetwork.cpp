@@ -66,8 +66,8 @@ namespace prob_nets{
         
         if(json.find("variables") == json.end() || json["variables"].is_array() == false){ return false; }
         Json& variables = json["variables"];
-        std::vector<probability_network::ProbabilityDistribution> probabilityTable;
-        std::vector< std::shared_ptr< probability_network::Variable> > parents;
+        std::vector<prob_nets::ProbabilityDistribution> probabilityTable;
+        std::vector< std::shared_ptr< prob_nets::Variable> > parents;
         std::map<std::string, std::shared_ptr<ProbabilisticVariable> > nodes;
         for(int v = 0; v < variables.size(); ++v)
         {
@@ -81,7 +81,7 @@ namespace prob_nets{
             }
             std::vector<std::string> values = var["values"];
             std::string name = var["name"];
-            std::shared_ptr< probability_network::ProbabilisticVariable > variable_ptr(new probability_network::ProbabilisticVariable(name, values, parents, probabilityTable));
+            std::shared_ptr< prob_nets::ProbabilisticVariable > variable_ptr(new prob_nets::ProbabilisticVariable(name, values, parents, probabilityTable));
             nodes[name] = variable_ptr;
             m_nodes.push_back(variable_ptr);
         }
